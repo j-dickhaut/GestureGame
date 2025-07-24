@@ -1,7 +1,10 @@
 import "package:flutter/material.dart";
+import "package:ssp_extreme/screens/game/data/game_data.dart";
+import "package:ssp_extreme/screens/game/game.dart";
 
 import "package:ssp_extreme/screens/inventory/inventory.dart";
 import "package:ssp_extreme/screens/options/options.dart";
+import "package:ssp_extreme/shared/data/data.dart";
 import "package:ssp_extreme/shared/theme/styled_text.dart";
 import "package:ssp_extreme/shared/theme/theme.dart";
 import "widgets/column_buttons.dart";
@@ -39,7 +42,18 @@ class HomeScreen extends StatelessWidget {
                 ),
                 ColumnButtonBig(
                     text: "Play",
-                    onPressed: (){},
+                    onPressed: (){
+                      if(inventoryList.length == 4){
+                        //TODO: Else (Error), when Player Inventory is not full
+                        isGame = true;
+                        GameData gamedata = GameData(gameId: 1);
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (ctx)=> GameScreen(gamedata: gamedata))
+                        );
+                      }
+                    },
                     icon: Icons.play_arrow),
                 ColumnButton(
                     text: "Inventory",

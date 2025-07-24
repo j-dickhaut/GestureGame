@@ -9,6 +9,7 @@ class AppColor {
   static Color secondaryAccent = const Color.fromRGBO(232, 201, 100, 1.0);
   static Color titleColor = const Color.fromRGBO(220, 220, 220, 1.0);
   static Color textColor = const Color.fromRGBO(0, 0, 0, 1.0);
+  static Color selectedColor = const Color.fromARGB(255, 11, 255, 11);
 
   static Map<String,List<Color>> gestureColor = {
     //colors for Gestures as a list

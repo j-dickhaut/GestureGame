@@ -6,16 +6,51 @@ import 'package:ssp_extreme/shared/widgets/active_inventory_card.dart';
 import '../data/gesture_class.dart';
 
 class ActiveInventory extends StatelessWidget {
-  const ActiveInventory({required this.onPressedButton, super.key});
+  const ActiveInventory({required this.inventoryList, required this.onPressedButton, this.selected, super.key});
+  //add isGameVar
 
+  final List<Gesture> inventoryList; //implemented for Reuseability
   final void Function(Gesture) onPressedButton;
-  final double tableHeight = 160;
+  final  Gesture? selected; 
   final double rowHeight = 75;
+
+  Widget inventoryCardSetting (int index){
+    //checks if Inventory is part of Game or InventoryScreen and returns the right Card
+    //Inventory: when cell is empty give out a placeholder widget
+    //Game: when cell is selected change color
+    if(isGame){
+      if(selected == inventoryList[index]){
+        return ActiveInventoryCard(
+          gesture: inventoryList[index],
+          onPressed: onPressedButton,
+          isGame: isGame,
+          isSelected: true,
+        );    
+      }else{
+        return ActiveInventoryCard(
+          gesture: inventoryList[index],
+          onPressed: onPressedButton,
+          isGame: isGame,
+        );
+      }
+    }else{
+      if (inventoryList.asMap().containsKey(index)) {
+        return ActiveInventoryCard(
+          gesture: inventoryList[index],
+          onPressed: onPressedButton,
+        );
+      } else {
+        return Container(
+          decoration: BoxDecoration(
+            border: Border.all(width: 1.2, color: AppColor.primaryAccentTwo),
+          ),
+        );
+      }
+    }
+  }    
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: tableHeight,
-      child: Table(
+    return Table(
         defaultVerticalAlignment: TableCellVerticalAlignment.middle,
         children: [
           TableRow(
@@ -23,39 +58,15 @@ class ActiveInventory extends StatelessWidget {
               TableCell(
                 child: SizedBox(
                   height: rowHeight,
-                  child: inventoryList.isNotEmpty
-                      ? ActiveInventoryCard(
-                          gesture: inventoryList[0],
-                          onPressed: onPressedButton,
-                        )
-                      : Container(
-                          decoration: BoxDecoration(
-                            border: Border.all(
-                              width: 1.2,
-                              color: AppColor.primaryAccentTwo,
-                            ),
-                          ),
-                        ),
+                  child: inventoryCardSetting(0),
                 ),
-              ),
+              ),  
               TableCell(
                 child: SizedBox(
                   height: rowHeight,
-                  child: inventoryList.length >= 2
-                      ? ActiveInventoryCard(
-                          gesture: inventoryList[1],
-                          onPressed: onPressedButton,
-                        )
-                      : Container(
-                          decoration: BoxDecoration(
-                            border: Border.all(
-                              width: 1.2,
-                              color: AppColor.primaryAccentTwo,
-                            ),
-                          ),
-                        ),
+                  child: inventoryCardSetting(1),
                 ),
-              ),
+              ),  
             ],
           ),
 
@@ -64,43 +75,18 @@ class ActiveInventory extends StatelessWidget {
               TableCell(
                 child: SizedBox(
                   height: rowHeight,
-                  child: inventoryList.length >= 3
-                      ? ActiveInventoryCard(
-                          gesture: inventoryList[2],
-                          onPressed: onPressedButton,
-                        )
-                      : Container(
-                          decoration: BoxDecoration(
-                            border: Border.all(
-                              width: 1.2,
-                              color: AppColor.primaryAccentTwo,
-                            ),
-                          ),
-                        ),
+                  child: inventoryCardSetting(2),
                 ),
               ),
               TableCell(
                 child: SizedBox(
                   height: rowHeight,
-                  child: inventoryList.length == 4
-                      ? ActiveInventoryCard(
-                          gesture: inventoryList[3],
-                          onPressed: onPressedButton,
-                        )
-                      : Container(
-                          decoration: BoxDecoration(
-                            border: Border.all(
-                              width: 1.2,
-                              color: AppColor.primaryAccentTwo,
-                            ),
-                          ),
-                        ),
+                  child: inventoryCardSetting(3),
                 ),
               ),
             ],
           ),
         ],
-      ),
-    );
+      );    
   }
 }

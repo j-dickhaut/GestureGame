@@ -7,12 +7,16 @@ class ActiveInventoryCard extends StatelessWidget {
   const ActiveInventoryCard({
     required this.gesture,
     required this.onPressed,
+    this.isGame = false,
+    this.isSelected = false,
     super.key,
   });
 
   //fields init
   final void Function(Gesture) onPressed;
   final Gesture gesture;
+  final bool isGame;
+  final bool isSelected;
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +26,10 @@ class ActiveInventoryCard extends StatelessWidget {
       },
       child: Container(
         decoration: BoxDecoration(
-          color: AppColor.primaryAccentTwo,
+          //changes the color, when Card gets selected by the player in Game
+          color: isSelected
+            ?AppColor.selectedColor
+            :AppColor.primaryAccentTwo,
           border: Border.all(width: 1.2, color: AppColor.primaryAccent),
         ),
         child: Stack(
@@ -68,10 +75,14 @@ class ActiveInventoryCard extends StatelessWidget {
               ),
             ),
             Positioned(right: 15, bottom: 10, child: StyledText(gesture.name)),
-            Positioned(
-              right: 5,
-              top: 5,
-              child: Icon(Icons.close, color: Colors.red),
+            //Red cross only apears in Inventory Screen
+            //TODO: empty Text is a bit hacky. Check if sth different is better
+            isGame
+              ? Text("")
+              :Positioned(
+                right: 5,
+                top: 5,
+                child:Icon(Icons.close, color: Colors.red),
             ),
           ],
         ),

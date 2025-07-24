@@ -14,14 +14,17 @@ class InventoryScreen extends StatefulWidget {
 
 
 class _InventoryScreenState extends State<InventoryScreen> {
-  void  inventorySetState(Gesture gesture){
 
+  void  inventorySetState(Gesture gesture){
+  //rebuilds the screen when Player Inventory changes
     if(gesture.isInventory == false && inventoryList.length < 4){
+      //adds pressed Gesture to the List
       setState(() {
         gesture.isInventory = !gesture.isInventory;
         inventoryList.add(gesture);
       });
     }else if(gesture.isInventory == true){
+        //removes pressed Gesture from List
       setState(() {
         gesture.isInventory = !gesture.isInventory;
         inventoryList.remove(gesture);
@@ -72,7 +75,10 @@ class _InventoryScreenState extends State<InventoryScreen> {
             StyledHeading('Your active inventory:'),
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: ActiveInventory(onPressedButton: inventorySetState),
+              child: ActiveInventory(
+                inventoryList: inventoryList, 
+                onPressedButton:  inventorySetState
+              ),
             ),
             SizedBox(height: 20,)
           ],
