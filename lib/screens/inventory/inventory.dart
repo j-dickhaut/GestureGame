@@ -7,24 +7,22 @@ import 'package:ssp_extreme/shared/data/data.dart';
 import '../../shared/data/gesture_class.dart';
 
 class InventoryScreen extends StatefulWidget {
-   const InventoryScreen({super.key});
+  const InventoryScreen({super.key});
   @override
   State<InventoryScreen> createState() => _InventoryScreenState();
 }
 
-
 class _InventoryScreenState extends State<InventoryScreen> {
-
-  void  inventorySetState(Gesture gesture){
-  //rebuilds the screen when Player Inventory changes
-    if(gesture.isInventory == false && inventoryList.length < 4){
-      //adds pressed Gesture to the List
+  void inventorySetState(Gesture gesture) {
+    //Rebuild Screen by Inventory change
+    if (gesture.isInventory == false && inventoryList.length < 4) {
+      //add selected Gesture
       setState(() {
         gesture.isInventory = !gesture.isInventory;
         inventoryList.add(gesture);
       });
-    }else if(gesture.isInventory == true){
-        //removes pressed Gesture from List
+    } else if (gesture.isInventory == true) {
+      //removes selected Gesture
       setState(() {
         gesture.isInventory = !gesture.isInventory;
         inventoryList.remove(gesture);
@@ -36,54 +34,38 @@ class _InventoryScreenState extends State<InventoryScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColor.primaryAccent,
-      appBar: AppBar(
-        title: StyledTitle("Inventory"),
-      ),
+      appBar: AppBar(title: StyledTitle("Inventory")),
       body: Column(
-        children:[
-          Expanded(child: 
-          Stack(children: [
-            Positioned.fill(
-              child: Image.asset("assets/img/background.png", fit: BoxFit.cover),
+        children: [
+          Expanded(
+            child: Stack(
+              children: [
+                Positioned.fill(
+                  child: Image.asset(
+                    "assets/img/background.png",
+                    fit: BoxFit.cover,
+                  ),
+                ),
+                ListView.builder(
+                  itemCount: gestureList.length,
+                  itemBuilder: (_, index) {
+                    return GestureCard(
+                      gestureList[index],
+                      onPressed: inventorySetState,
+                    );
+                  },
+                ),
+              ],
             ),
-            ListView.builder(itemCount: gestureList.length, itemBuilder: (_,index){
-                  return GestureCard(gestureList[index], onPressed: inventorySetState);
-                },),
-        ]),
           ),
-          
-    
-            //Inventory
-            SizedBox(
-              height: 2,
-              child: Container(
-                color: AppColor.primaryColor,
-              ),
-            ),
-            SizedBox(
-              height: 2,
-              child: Container(
-                color: AppColor.textColor,
-              ),
-            ),
-            SizedBox(
-              height: 5,
-              child: Container(
-                color: AppColor.primaryAccent,
-              ),
-            ),
-            StyledHeading('Your active inventory:'),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: ActiveInventory(
-                inventoryList: inventoryList, 
-                onPressedButton:  inventorySetState
-              ),
-            ),
-            SizedBox(height: 20,)
-          ],
-        ),
+
+          //Inventory
+          ActiveInventory(
+            inventoryList: inventoryList,
+            onPressedButton: inventorySetState,
+          ),
+        ],
+      ),
     );
-    
   }
 }

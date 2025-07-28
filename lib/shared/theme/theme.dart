@@ -10,8 +10,9 @@ class AppColor {
   static Color titleColor = const Color.fromRGBO(220, 220, 220, 1.0);
   static Color textColor = const Color.fromRGBO(0, 0, 0, 1.0);
   static Color selectedColor = const Color.fromARGB(255, 11, 255, 11);
+  static Color highlightColor = const Color.fromRGBO(230, 10, 10, 1.0);
 
-  static Map<String,List<Color>> gestureColor = {
+  static Map<String, List<Color>> gestureColor = {
     //colors for Gestures as a list
     // [0] = color for circle ,[1] = color for text
     "Sponge": [const Color(0xfffa6965), const Color(0xff582F41)],
@@ -28,18 +29,17 @@ class AppColor {
     "Dragon": [const Color(0xffd34014), const Color(0xff2B2B2B)],
     "Water": [const Color(0xff4299fa), const Color(0xff36444D)],
     "Air": [const Color(0xffa2fcfc), const Color(0xff8CA0A0)],
-    "Paper": [const Color(0xffff9dfd), const Color(0xff574B55)]
+    "Paper": [const Color(0xffff9dfd), const Color(0xff574B55)],
   };
-
 }
 
 ThemeData primaryTheme = ThemeData(
-
   //seed color
   colorScheme: ColorScheme.fromSeed(
-      seedColor: AppColor.primaryColor,
-      brightness: Brightness.light,
-      surface: AppColor.primaryAccent),
+    seedColor: AppColor.primaryColor,
+    brightness: Brightness.light,
+    surface: AppColor.primaryAccent,
+  ),
 
   // scaffolding
   //scaffoldBackgroundColor: AppColor.primaryAccent,
@@ -53,25 +53,30 @@ ThemeData primaryTheme = ThemeData(
   ),
 
   textTheme: TextTheme(
-
     bodyMedium: TextStyle(
       color: AppColor.textColor,
       fontSize: 16,
-      letterSpacing: 1
+      letterSpacing: 1,
     ),
 
     headlineMedium: TextStyle(
-        color: AppColor.textColor,
-        fontWeight: FontWeight.bold,
-        fontSize: 18,
-        letterSpacing: 1
+      color: AppColor.textColor,
+      fontWeight: FontWeight.bold,
+      fontSize: 18,
+      letterSpacing: 1,
     ),
 
     titleMedium: TextStyle(
-        color: AppColor.titleColor,
-        fontWeight: FontWeight.bold,
-        fontSize: 20,
-        letterSpacing: 2
+      color: AppColor.titleColor,
+      fontWeight: FontWeight.bold,
+      fontSize: 20,
+      letterSpacing: 2,
+    ),
+
+    displayLarge: TextStyle(
+      color: AppColor.highlightColor,
+      fontWeight: FontWeight.bold,
+      fontSize: 60,
     ),
   ),
 
@@ -82,4 +87,3 @@ ThemeData primaryTheme = ThemeData(
     shape: ContinuousRectangleBorder(),
   ),
 );
-
