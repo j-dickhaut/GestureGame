@@ -1,23 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:ssp_extreme/shared/theme/styled_text.dart';
 import 'package:ssp_extreme/shared/theme/theme.dart';
 
-class TextPanel extends StatefulWidget {
-  final String displayText;
-
-  const TextPanel({this.displayText = 'debug Text', super.key});
-
-  @override
-  State<TextPanel> createState() => _TextPanelState();
-}
-
-class _TextPanelState extends State<TextPanel> {
-  late String displayText;
-  @override
-  void initState() {
-    super.initState();
-    displayText = widget.displayText;
-  }
+class Panel extends StatelessWidget {
+  final Widget displayOutput;
+  const Panel({this.displayOutput = const Text('debug Text'), super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +19,7 @@ class _TextPanelState extends State<TextPanel> {
               color: AppColor.primaryAccentTwo,
               border: Border.all(color: AppColor.textColor, width: 1.6),
             ),
-            child: StyledText(displayText),
+            child: displayOutput,
           ),
         ],
       ),
