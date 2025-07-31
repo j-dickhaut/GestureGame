@@ -56,6 +56,8 @@ Gesture(name: "Air", index: 13),
 Gesture(name: "Paper", index: 14),
 ];
 
+bool isGame = false;
+
 
 
  /* static Map<String,int> gestureIndex = {

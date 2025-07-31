@@ -9,23 +9,29 @@ class StyledText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(text,
-      style: GoogleFonts.metamorphous(textStyle: Theme.of(context).textTheme.bodyMedium,),
+    return Text(
+      text,
+      style: GoogleFonts.metamorphous(
+        textStyle: Theme.of(context).textTheme.bodyMedium,
+      ),
     );
   }
 }
+
 //Widget Heading Text
 class StyledHeading extends StatelessWidget {
-
-  const StyledHeading (this.text, {this.alpha = 255, super.key});
+  const StyledHeading(this.text, {this.alpha = 255, super.key});
 
   final int alpha;
   final String text;
 
   @override
   Widget build(BuildContext context) {
-    return Text(text.toUpperCase(),
-      style: GoogleFonts.metamorphous(textStyle: Theme.of(context).textTheme.bodyMedium,),
+    return Text(
+      text.toUpperCase(),
+      style: GoogleFonts.metamorphous(
+        textStyle: Theme.of(context).textTheme.bodyMedium,
+      ),
     );
   }
 }
@@ -38,8 +44,33 @@ class StyledTitle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(text,
-      style: GoogleFonts.metamorphous(textStyle: Theme.of(context).textTheme.titleMedium,),
+    return Text(
+      text,
+      style: GoogleFonts.metamorphous(
+        textStyle: Theme.of(context).textTheme.titleMedium,
+      ),
+    );
+  }
+}
+
+//Textwidget Syled like a Dotmatrik Scoreboard
+class StyledScoreboard extends StatelessWidget {
+  const StyledScoreboard(this.text, {super.key});
+
+  final String text;
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      text,
+      textAlign: TextAlign.center,
+      textHeightBehavior: TextHeightBehavior(
+        //applyHeightToFirstAscent: false,
+        applyHeightToLastDescent: false,
+      ),
+      style: GoogleFonts.handjet(
+        textStyle: Theme.of(context).textTheme.displayLarge,
+      ),
     );
   }
 }
