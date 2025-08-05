@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:ssp_extreme/screens/cheatsheet/widgets/displayed_gesture.dart';
+import 'package:ssp_extreme/shared/data/data.dart';
 import 'dart:math';
 import 'package:ssp_extreme/shared/theme/styled_text.dart';
 import 'package:ssp_extreme/shared/theme/theme.dart';
@@ -97,6 +99,7 @@ class _CheatsheetScreenState extends State<CheatsheetScreen> {
                 ),
               ),
             ),
+            DisplayedGesture(gesture: gestureList[index]),
           ],
         ),
       ),
