@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ssp_extreme/screens/cheatsheet/cheatsheet.dart';
 //game folder
 import 'package:ssp_extreme/screens/game/data/game_data.dart';
 import 'package:ssp_extreme/screens/game/data/gamelogic.dart';
@@ -75,14 +76,14 @@ class _GameScreenState extends State<GameScreen> {
       // display computer Pick
       displayOutput = StyledText('the computer picked ${comPick.name}');
     });
-    await Future.delayed(const Duration(seconds: 3));
+    await Future.delayed(const Duration(seconds: 2));
     setState(() {
       //display Winner
       displayOutput = StyledText(diplayOutputText);
       gamedata.computerScore;
       gamedata.playerScore;
     });
-    await Future.delayed(const Duration(seconds: 3));
+    await Future.delayed(const Duration(seconds: 2));
     setState(() {
       //reset Gameboard
       selected = null;
@@ -95,10 +96,20 @@ class _GameScreenState extends State<GameScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        actions: [
+          IconButton(
+            icon: Icon(Icons.menu_book_outlined),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (ctx) => CheatsheetScreen()),
+              );
+            },
+          ),
+        ],
         leading: IconButton(
           onPressed: () {
             isGame = false;
-            //TODO: Delete gamedata for Performance
             Navigator.pop(context);
           },
           icon: Icon(Icons.close, color: Colors.red),

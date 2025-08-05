@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ssp_extreme/screens/cheatsheet/cheatsheet.dart';
 import 'package:ssp_extreme/shared/widgets/active_inventory.dart';
 import 'package:ssp_extreme/screens/inventory/widgets/gesture_card.dart';
 import 'package:ssp_extreme/shared/theme/styled_text.dart';
@@ -7,12 +8,20 @@ import 'package:ssp_extreme/shared/data/data.dart';
 import '../../shared/data/gesture_class.dart';
 
 class InventoryScreen extends StatefulWidget {
-  const InventoryScreen({super.key});
+  final VoidCallback onReturn;
+  const InventoryScreen({required this.onReturn, super.key});
   @override
   State<InventoryScreen> createState() => _InventoryScreenState();
 }
 
 class _InventoryScreenState extends State<InventoryScreen> {
+  late VoidCallback onReturn;
+  @override
+  void initState() {
+    onReturn = widget.onReturn;
+    super.initState();
+  }
+
   void inventorySetState(Gesture gesture) {
     //Rebuild Screen by Inventory change
     if (gesture.isInventory == false && inventoryList.length < 4) {
@@ -34,7 +43,27 @@ class _InventoryScreenState extends State<InventoryScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColor.primaryAccent,
-      appBar: AppBar(title: StyledTitle("Inventory")),
+      appBar: AppBar(
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back),
+          onPressed: () {
+            onReturn();
+            Navigator.pop(context);
+          },
+        ),
+        title: StyledTitle("Inventory"),
+        actions: [
+          IconButton(
+            icon: Icon(Icons.menu_book_outlined),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (ctx) => CheatsheetScreen()),
+              );
+            },
+          ),
+        ],
+      ),
       body: Column(
         children: [
           Expanded(

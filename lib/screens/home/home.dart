@@ -10,8 +10,19 @@ import "package:ssp_extreme/shared/theme/styled_text.dart";
 import "package:ssp_extreme/shared/theme/theme.dart";
 import "widgets/column_buttons.dart";
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  void setInventory() {
+    setState(() {
+      inventoryList;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -46,13 +57,19 @@ class HomeScreen extends StatelessWidget {
                   text: "Play",
                   onPressed: () {
                     if (inventoryList.length == 4) {
-                      //TODO: Else (Error), when Player Inventory is not full
                       isGame = true;
                       GameData gamedata = GameData(gameId: 1);
                       Navigator.push(
                         context,
                         MaterialPageRoute(
                           builder: (ctx) => GameScreen(gamedata: gamedata),
+                        ),
+                      );
+                    } else {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: Text('You need a full Inventory to play'),
+                          duration: Duration(seconds: 2),
                         ),
                       );
                     }
@@ -64,7 +81,10 @@ class HomeScreen extends StatelessWidget {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (ctx) => InventoryScreen()),
+                      MaterialPageRoute(
+                        builder: (ctx) =>
+                            InventoryScreen(onReturn: setInventory),
+                      ),
                     );
                   },
                   icon: Icons.backpack_outlined,
@@ -89,7 +109,7 @@ class HomeScreen extends StatelessWidget {
                   },
                   icon: Icons.settings,
                 ),
-                SizedBox(height: 60),
+                SizedBox(height: 80),
               ],
             ),
           ),
