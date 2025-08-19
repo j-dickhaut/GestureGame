@@ -11,7 +11,7 @@ import 'package:ssp_extreme/shared/data/data.dart';
 import 'package:ssp_extreme/shared/data/gesture_class.dart';
 import 'package:ssp_extreme/shared/theme/styled_text.dart';
 import 'package:ssp_extreme/shared/theme/theme.dart';
-import 'package:ssp_extreme/shared/widgets/active_inventory.dart';
+import 'package:ssp_extreme/shared/widgets/player_inventory.dart';
 
 class GameScreen extends StatefulWidget {
   final GameData gamedata;
@@ -141,8 +141,9 @@ class _GameScreenState extends State<GameScreen> {
             ],
           ),
           //lower Part: Player Inventory
-          ActiveInventory(
+          PlayerInventory(
             inventoryList: gamedata.playerInventory,
+            style: PlayerInventoryStyle.gameboard,
             onPressedButton: playerInventoryFunction,
             selected: selected,
           ),
