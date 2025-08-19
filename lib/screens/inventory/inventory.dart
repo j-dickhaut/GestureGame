@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ssp_extreme/screens/cheatsheet/cheatsheet.dart';
-import 'package:ssp_extreme/shared/widgets/active_inventory.dart';
-import 'package:ssp_extreme/screens/inventory/widgets/gesture_card.dart';
+import 'package:ssp_extreme/shared/widgets/player_inventory.dart';
+import 'package:ssp_extreme/screens/inventory/widgets/inventory_list_card.dart';
 import 'package:ssp_extreme/shared/theme/styled_text.dart';
 import 'package:ssp_extreme/shared/theme/theme.dart';
 import 'package:ssp_extreme/shared/data/data.dart';
@@ -22,18 +22,18 @@ class _InventoryScreenState extends State<InventoryScreen> {
     super.initState();
   }
 
-  void inventorySetState(Gesture gesture) {
+  void inventorySetState(Gesture? gesture) {
     //Rebuild Screen by Inventory change
-    if (gesture.isInventory == false && inventoryList.length < 4) {
+    if (!inventoryList.contains(gesture) && inventoryList.length < 4) {
       //add selected Gesture
       setState(() {
-        gesture.isInventory = !gesture.isInventory;
-        inventoryList.add(gesture);
+        if (gesture != null) {
+          inventoryList.add(gesture);
+        }
       });
-    } else if (gesture.isInventory == true) {
+    } else if (inventoryList.contains(gesture)) {
       //removes selected Gesture
       setState(() {
-        gesture.isInventory = !gesture.isInventory;
         inventoryList.remove(gesture);
       });
     }
@@ -78,7 +78,7 @@ class _InventoryScreenState extends State<InventoryScreen> {
                 ListView.builder(
                   itemCount: gestureList.length,
                   itemBuilder: (_, index) {
-                    return GestureCard(
+                    return InventorylistCard(
                       gestureList[index],
                       onPressed: inventorySetState,
                     );
@@ -89,8 +89,9 @@ class _InventoryScreenState extends State<InventoryScreen> {
           ),
 
           //Inventory
-          ActiveInventory(
+          PlayerInventory(
             inventoryList: inventoryList,
+            style: PlayerInventoryStyle.inventory,
             onPressedButton: inventorySetState,
           ),
         ],

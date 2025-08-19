@@ -2,16 +2,15 @@ import 'package:flutter/material.dart';
 
 class AppColor {
   //colors
-  static Color primaryColor = const Color.fromRGBO(70, 175, 137, 1.0);
-  static Color primaryAccent = const Color.fromRGBO(115, 200, 161, 1.0);
-  static Color primaryAccentTwo = const Color.fromRGBO(139, 215, 185, 1.0);
-  static Color secondaryColor = const Color.fromRGBO(229, 185, 63, 1.0);
-  static Color secondaryAccent = const Color.fromRGBO(232, 201, 100, 1.0);
-  static Color titleColor = const Color.fromRGBO(220, 220, 220, 1.0);
-  static Color textColor = const Color.fromRGBO(0, 0, 0, 1.0);
-  static Color selectedColor = const Color.fromARGB(255, 11, 255, 11);
-  static Color highlightColor = const Color.fromRGBO(230, 10, 10, 1.0);
-
+  static const Color primaryColor = Color.fromRGBO(70, 175, 137, 1.0);
+  static const Color primaryAccent = Color.fromRGBO(115, 200, 161, 1.0);
+  static const Color primaryAccentTwo = Color.fromRGBO(139, 215, 185, 1.0);
+  static const Color secondaryColor = Color.fromRGBO(229, 185, 63, 1.0);
+  static const Color secondaryAccent = Color.fromRGBO(232, 201, 100, 1.0);
+  static const Color titleColor = Color.fromRGBO(220, 220, 220, 1.0);
+  static const Color textColor = Color.fromRGBO(0, 0, 0, 1.0);
+  static const Color selectedColor = Color.fromARGB(255, 11, 255, 11);
+  static const Color highlightColor = Color.fromRGBO(230, 10, 10, 1.0);
   static Map<String, List<Color>> gestureColor = {
     //colors for Gestures as a list
     // [0] = color for circle ,[1] = color for text
