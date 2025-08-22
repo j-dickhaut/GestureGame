@@ -8,7 +8,7 @@ enum GestureCardStyle {
     isEmpty: false,
   ),
   selected(
-    cardColor: AppColor.highlightColor,
+    cardColor: AppColor.selectedColor,
     isCloseIcon: false,
     isEmpty: false,
   ),

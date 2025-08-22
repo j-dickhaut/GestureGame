@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "53949179333",
+    "project_id": "gesturegame-31e77",
+    "storage_bucket": "gesturegame-31e77.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:53949179333:android:706e9b30681c09b55bd7ac",
+        "android_client_info": {
+          "package_name": "com.example.ssp_extreme"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB6-bWjYqdIFplV8uP1VGBdqjSgRobv-z4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
