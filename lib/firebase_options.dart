@@ -50,7 +50,7 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyB6-bWjYqdIFplV8uP1VGBdqjSgRobv-z4',
+    apiKey: 'AIzaSyCydZ6aHP3w00m0PiYg8M6DsecDjEVj6CQ',
     appId: '1:53949179333:android:706e9b30681c09b55bd7ac',
     messagingSenderId: '53949179333',
     projectId: 'gesturegame-31e77',
@@ -58,11 +58,12 @@ class DefaultFirebaseOptions {
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyClKQrOLeyGHSDEuU3rbOE7MVNKd1uILbI',
+    apiKey: 'AIzaSyBsaP0vBfSrJvBpnbZfHm9yABy5w3_5S-E',
     appId: '1:53949179333:ios:1e7974a6ecd1c7815bd7ac',
     messagingSenderId: '53949179333',
     projectId: 'gesturegame-31e77',
     storageBucket: 'gesturegame-31e77.firebasestorage.app',
     iosBundleId: 'com.example.sspExtreme',
   );
+
 }

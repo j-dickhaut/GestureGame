@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class AppColor {
   //colors
   static const Color primaryColor = Color.fromRGBO(70, 175, 137, 1.0);
   static const Color primaryAccent = Color.fromRGBO(115, 200, 161, 1.0);
   static const Color primaryAccentTwo = Color.fromRGBO(139, 215, 185, 1.0);
-  static const Color secondaryColor = Color.fromRGBO(229, 185, 63, 1.0);
-  static const Color secondaryAccent = Color.fromRGBO(232, 201, 100, 1.0);
   static const Color titleColor = Color.fromRGBO(220, 220, 220, 1.0);
   static const Color textColor = Color.fromRGBO(0, 0, 0, 1.0);
+  static const Color textColorSoft = Color.fromRGBO(0, 0, 0, 0.7);
   static const Color selectedColor = Color.fromARGB(255, 11, 255, 11);
   static const Color highlightColor = Color.fromRGBO(230, 10, 10, 1.0);
   static Map<String, List<Color>> gestureColor = {
@@ -40,8 +40,20 @@ ThemeData primaryTheme = ThemeData(
     surface: AppColor.primaryAccent,
   ),
 
-  // scaffolding
-  //scaffoldBackgroundColor: AppColor.primaryAccent,
+  // text Field
+  inputDecorationTheme: InputDecorationTheme(
+    filled: true,
+    fillColor: AppColor.primaryAccentTwo,
+    contentPadding: const EdgeInsets.symmetric(horizontal: 16),
+    hintStyle: GoogleFonts.metamorphous(
+      textStyle: TextStyle(
+        color: AppColor.textColorSoft,
+        fontWeight: FontWeight.w400,
+        fontSize: 12,
+        letterSpacing: 1,
+      ),
+    ),
+  ),
 
   // app bar
   appBarTheme: AppBarTheme(
