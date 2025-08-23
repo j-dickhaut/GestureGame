@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:ssp_extreme/shared/theme/styled_text.dart';
 import 'package:ssp_extreme/shared/theme/theme.dart';
 
