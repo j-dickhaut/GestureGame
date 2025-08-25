@@ -2,8 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:ssp_extreme/shared/theme/styled_text.dart';
 import 'package:ssp_extreme/shared/theme/theme.dart';
 
-class LoginRegister extends StatelessWidget {
+class LoginRegister extends StatefulWidget {
   const LoginRegister({super.key});
+
+  @override
+  State<LoginRegister> createState() => _LoginRegisterState();
+}
+
+class _LoginRegisterState extends State<LoginRegister> {
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -15,6 +23,7 @@ class LoginRegister extends StatelessWidget {
         children: [
           StyledHeading('sign in or create an account'),
           TextField(
+            controller: emailController,
             style: Theme.of(context).textTheme.bodyMedium,
             decoration: InputDecoration(
               hintText: 'e-mail',
@@ -24,8 +33,9 @@ class LoginRegister extends StatelessWidget {
           ),
           const SizedBox(height: 16),
           TextField(
+            controller: passwordController,
             decoration: InputDecoration(
-              hintText: 'passwort',
+              hintText: 'password',
               icon: Icon(Icons.password),
             ),
             obscureText: true,
